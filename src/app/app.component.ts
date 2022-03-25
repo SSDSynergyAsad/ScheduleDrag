@@ -168,9 +168,41 @@ export class AppComponent implements OnInit {
       this.isDesktop = this.breakpointObserver.isMatched(breakpoints);
     });
 
-    for (let id = 1; id <= 7; id++) {
+    // {
+    //   connect: [false, true, false],
+    //   padding: [0, 60],
+    //   behaviour: 'drag-tap',
+    //   range: {
+    //     min: 0,
+    //     max: 86400,
+    //   },
+    //   tooltips: [new TimeFormatter(), new TimeFormatter()],
+    //   step: 60,
+    //   pips: {
+    //     mode: 'count',
+    //     values: 25,
+    //     format: new PipsFormatter(),
+    //   },
+    //   keyboard: true,
+    // },
+
+    for (let id = 1; id <= this.someTimeConfig.length; id++) {
       this.documents.push({
         id,
+        connect: [false, true, false],
+        behaviour: 'drag-tap',
+        range: {
+          min: 0,
+          max: 86400,
+        },
+        tooltips: [new TimeFormatter(), new TimeFormatter()],
+        step: 60,
+        pips: {
+          mode: 'count',
+          values: 25,
+          format: new PipsFormatter(),
+        },
+        keyboard: true,
         name: `Document ${id}`,
         disabled: id % 2 === 0,
       });
@@ -361,11 +393,10 @@ export class AppComponent implements OnInit {
   selectionEndPoint(event) {
     console.log(event);
   }
-  selectedItemsVaule(value){
+  selectedItemsVaule(value) {
     console.log(value);
   }
-  getAllData(values){
-  console.log("🚀 ~ file: app.component.ts ~ line 371 ~ AppComponent ~ getAllData ~ values", values)
-
+  getAllData(values) {
+    console.log('🚀 ~ file: app.component.ts ~ line 371 ~ AppComponent ~ getAllData ~ values', values);
   }
 }

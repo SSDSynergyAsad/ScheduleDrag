@@ -41,7 +41,8 @@
       <dts-select-container data-cy="select-container" #selectContainer="dts-select-container" [selectMode]="selectMode"
         [(selectedItems)]="selectedDocuments" [disabled]="disable" [disableRangeSelection]="disableRangeSelection"
         [selectOnClick]="selectOnClick" [selectOnDrag]="selectOnDrag" [selectWithShortcut]="selectWithShortcut"
-        [dragOverItems]="dragOverItems" (selectionEnded)="selectionEndPoint($event)" (itemSelected)="getAllData($event)" (selectedItemsChange)="selectedItemsVaule($event)">
+        [dragOverItems]="dragOverItems" (selectionEnded)="selectionEndPoint($event)" (itemSelected)="getAllData($event)"
+        (selectedItemsChange)="selectedItemsVaule($event)">
         <!-- <mat-grid-list cols="4" rowHeight="200px" gutterSize="20px">
           <mat-grid-tile
               [dtsSelectItem]="document"
@@ -76,13 +77,18 @@
         </div>
         <br />
         <br />
-        <div class="sliderTest" *ngFor="let item of someTimeConfig">
-          <nouislider #slider [dtsSelectItem]="document" [dtsDisabled]="disableEvenItems && document.disabled" [config]="item" [ngModel]="timeCreneau" (ngModelChange)="timeCreneau = $event"
-            style="margin-bottom: 5rem" [disabled]="modifiable">
+        <div class="sliderTest" *ngFor="let item of documents">
+          <nouislider #slider [dtsSelectItem]="item" [config]="item" [ngModel]="timeCreneau"
+            (ngModelChange)="timeCreneau = $event" style="margin-bottom: 5rem" [disabled]="modifiable">
           </nouislider>
         </div>
 
       </dts-select-container>
+    </div>
+    <div class="selected-items">
+      <div>Selected</div>
+      <pre>{{ selectedDocuments  | json }}</pre>
+      <pre>{{ selectedDocuments  | json }}</pre>
     </div>
 
     <!-- <div class="meta">
