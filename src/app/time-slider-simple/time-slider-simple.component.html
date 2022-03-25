@@ -1,0 +1,21 @@
+<div>
+  <table>
+    <tr>
+      <td>
+        <input matInput #creneauDebut type="time" [ngModel]="timeCreneau[0] | toHourFormat"
+          (ngModelChange)="updateCreneauON(creneauDebut.value)" [disabled]="!modifiable">
+      </td>
+      <td>
+        <input #creneauFin type="time" [ngModel]="timeCreneau[1] | toHourFormat"
+          (ngModelChange)="updateCreneauOFF(creneauFin.value)" [disabled]="modifiable">
+      </td>
+    </tr>
+  </table>
+</div>
+<br />
+<br />
+<div class="sliderTest" *ngFor="let item of someTimeConfig">
+  <nouislider #slider [config]="item" [ngModel]="timeCreneau" (ngModelChange)="timeCreneau = $event"
+    [dtsSelectItem]="dtsSelectItem" [dtsDisabled]="dtsDisabled" style="margin-bottom: 5rem" [disabled]="modifiable">
+  </nouislider>
+</div>

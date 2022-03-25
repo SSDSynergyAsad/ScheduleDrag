@@ -1,0 +1,136 @@
+$primary-color: #0087f7;
+$link-color: #9c27b0;
+
+h3 {
+  color: $primary-color;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid;
+  padding: 0 0 1rem;
+
+  a {
+    color: $link-color;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid $link-color;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: background-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover {
+      background: $link-color;
+      color: white;
+    }
+  }
+}
+
+section {
+  & + & {
+    margin-top: 2rem;
+  }
+
+  &:last-of-type {
+    margin-bottom: 2rem;
+  }
+}
+
+main {
+  max-width: 960px;
+  margin: 3rem auto 0;
+}
+
+mat-grid-list {
+  margin: 2rem;
+}
+
+mat-grid-tile {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+
+  mat-checkbox {
+    margin-right: 10px;
+  }
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+dts-select-container {
+  padding: 1rem;
+  // border: 2px dashed $primary-color;
+  border-radius: 5px;
+  margin: 2.5rem 0;
+
+  &:before {
+    // content: 'DRAG AREA';
+    font-family: Raleway;
+    color: $primary-color;
+  }
+
+  &::ng-deep .dts-disabled {
+    color: #b5b5b5;
+  }
+}
+
+mat-checkbox {
+  margin-right: 1rem;
+}
+
+.action-buttons {
+  margin: 1rem 0;
+}
+
+button {
+  & + & {
+    margin-left: 1rem;
+  }
+}
+
+.mobile-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.meta {
+  h4 {
+    font-weight: bold;
+    color: #9c27b0;
+    border-bottom: 3px solid #9a28b0;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  [data-cy='select-count'] {
+    &::before {
+      content: '(';
+    }
+
+    &::after {
+      content: ')';
+    }
+  }
+
+  .selected-items {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .selected-item {
+    padding: 10px;
+    border: 1px solid #a5a5a5;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+  }
+}
