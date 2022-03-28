@@ -4,7 +4,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { NouiFormatter, NouisliderComponent } from 'ng2-nouislider';
-
+import { SelectContainerComponent } from 'ngx-drag-to-select';
 const json = require('../../projects/ngx-drag-to-select/package.json');
 
 interface SliderDetails {
@@ -69,6 +69,8 @@ export class PipsFormatter implements NouiFormatter {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  @ViewChild(SelectContainerComponent) selectContainer: SelectContainerComponent;
+  @ViewChild('documents') documentContainer: SelectContainerComponent;
   @ViewChild('slider') public slider!: NouisliderComponent;
   public min = '06:14';
   public max = '18:33';
@@ -83,6 +85,7 @@ export class AppComponent implements OnInit {
   selectMode = false;
   disable = false;
   disableRangeSelection = false;
+  descendants: true;
   isDesktop = false;
   selectWithShortcut = false;
   dragOverItems = true;
@@ -98,50 +101,50 @@ export class AppComponent implements OnInit {
   //   enforceStep: false,
   //   enforceRange: false,
   // };
-  sliders: SliderDetails[] = [
-    {
-      value: 30,
-      highValue: 60,
-      floor: 0,
-      ceil: 100,
-    },
-    {
-      value: 30,
-      highValue: 60,
-      floor: 0,
-      ceil: 100,
-    },
-    {
-      value: 30,
-      highValue: 60,
-      floor: 0,
-      ceil: 100,
-    },
-    {
-      value: 30,
-      highValue: 60,
-      floor: 0,
-      ceil: 100,
-    },
-    {
-      value: 30,
-      highValue: 60,
-      floor: 0,
-      ceil: 100,
-    },
-    {
-      value: 30,
-      highValue: 60,
-      floor: 0,
-      ceil: 100,
-    },
-    {
-      value: 30,
-      highValue: 60,
-      floor: 0,
-      ceil: 100,
-    },
-  ];
+  // sliders: SliderDetails[] = [
+  //   {
+  //     value: 30,
+  //     highValue: 60,
+  //     floor: 0,
+  //     ceil: 100,
+  //   },
+  //   {
+  //     value: 30,
+  //     highValue: 60,
+  //     floor: 0,
+  //     ceil: 100,
+  //   },
+  //   {
+  //     value: 30,
+  //     highValue: 60,
+  //     floor: 0,
+  //     ceil: 100,
+  //   },
+  //   {
+  //     value: 30,
+  //     highValue: 60,
+  //     floor: 0,
+  //     ceil: 100,
+  //   },
+  //   {
+  //     value: 30,
+  //     highValue: 60,
+  //     floor: 0,
+  //     ceil: 100,
+  //   },
+  //   {
+  //     value: 30,
+  //     highValue: 60,
+  //     floor: 0,
+  //     ceil: 100,
+  //   },
+  //   {
+  //     value: 30,
+  //     highValue: 60,
+  //     floor: 0,
+  //     ceil: 100,
+  //   },
+  // ];
 
   constructor(
     private titleService: Title,
@@ -151,6 +154,7 @@ export class AppComponent implements OnInit {
   ) {
     iconRegistry.addSvgIcon('apple', sanitizer.bypassSecurityTrustResourceUrl('assets/apple-icon.svg'));
     iconRegistry.addSvgIcon('windows', sanitizer.bypassSecurityTrustResourceUrl('assets/windows-icon.svg'));
+
   }
 
   ngOnInit() {
@@ -392,6 +396,7 @@ export class AppComponent implements OnInit {
 
   selectionEndPoint(event) {
     console.log(event);
+    console.log(this.documentContainer.selectAll());
   }
   selectedItemsVaule(value) {
     console.log(value);

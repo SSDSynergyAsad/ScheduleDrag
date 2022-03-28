@@ -42,25 +42,8 @@
         [(selectedItems)]="selectedDocuments" [disabled]="disable" [disableRangeSelection]="disableRangeSelection"
         [selectOnClick]="selectOnClick" [selectOnDrag]="selectOnDrag" [selectWithShortcut]="selectWithShortcut"
         [dragOverItems]="dragOverItems" (selectionEnded)="selectionEndPoint($event)" (itemSelected)="getAllData($event)"
-        (selectedItemsChange)="selectedItemsVaule($event)">
-        <!-- <mat-grid-list cols="4" rowHeight="200px" gutterSize="20px">
-          <mat-grid-tile
-              [dtsSelectItem]="document"
-              [dtsDisabled]="disableEvenItems && document.disabled"
-              *ngFor="let document of documents">
-            {{ document.name }}
-          </mat-grid-tile>
-        </mat-grid-list> -->
-
-        <!-- <p>Min value: <input type="number" [(ngModel)]="startTime"></p>
-        <p>Max value: <input type="number" [(ngModel)]="endTime"></p>
-        <div *ngFor="let slider of sliders">
-          <ngx-slider [dtsSelectItem]="document" [dtsDisabled]="disableEvenItems && document.disabled"
-            [(value)]="slider.value" [(highValue)]="slider.highValue" [options]="sliderOptions(slider)"></ngx-slider>
-        </div> -->
+        (selectedItemsChange)="selectedItemsVaule($event)" >
         <button (click)="changerModeModification()">Modifier</button>
-        <!-- <app-time-slider-simple [dtsSelectItem]="document" [dtsDisabled]="disableEvenItems && document.disabled" min="06:14" max="18:33" [modifiable]="modification"></app-time-slider-simple> -->
-
         <div>
           <table>
             <tr>
@@ -79,17 +62,16 @@
         <br />
         <div class="sliderTest" *ngFor="let item of documents">
           <nouislider #slider [dtsSelectItem]="item" [config]="item" [ngModel]="timeCreneau"
-            (ngModelChange)="timeCreneau = $event" style="margin-bottom: 5rem" [disabled]="modifiable">
+            (ngModelChange)="timeCreneau = $event" style="margin-bottom: 5rem" [disabled]="modifiable" #documents>
           </nouislider>
         </div>
 
       </dts-select-container>
     </div>
-    <div class="selected-items">
+    <!-- <div class="selected-items">
       <div>Selected</div>
       <pre>{{ selectedDocuments  | json }}</pre>
-      <pre>{{ selectedDocuments  | json }}</pre>
-    </div>
+    </div> -->
 
     <!-- <div class="meta">
       <h4>Meta Information</h4>
