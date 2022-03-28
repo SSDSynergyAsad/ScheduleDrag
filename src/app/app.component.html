@@ -63,7 +63,7 @@
 
 
         <div class="sliderTest" *ngFor="let item of documents">
-          <nouislider #slider (ondrop)="ondrop($event)" (ondragover)="ondragover($event)"
+          <nouislider #slider (ondrop)="ondrop($event)" onselect="onSelect($event)" (ondragover)="ondragover($event)"
             (ondragstart)="ondragstart($event)" [dtsSelectItem]="item" [config]="item" [ngModel]="timeCreneau"
             (ngModelChange)="item.start" (ngModelChange)="onChange(item, $event)" style="margin-bottom: 5rem"
             [disabled]="modifiable" #documents>
@@ -72,20 +72,6 @@
 
       </dts-select-container>
     </div>
-    <!-- <div class="selected-items">
-      <div>Selected</div>
-      <pre>{{ selectedDocuments  | json }}</pre>
-    </div> -->
-
-    <!-- <div class="meta">
-      <h4>Meta Information</h4>
-      <div>
-        <label>Selected</label> <span data-cy="select-count">{{ selectedDocuments.length }}</span>
-      </div>
-      <ul class="selected-items">
-        <li data-cy="selected-item" class="selected-item" *ngFor="let item of selectedDocuments">{{ item.name }}</li>
-      </ul>
-    </div> -->
   </section>
   <section>
 

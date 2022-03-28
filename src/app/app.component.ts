@@ -74,6 +74,7 @@ export class AppComponent implements OnInit {
   @ViewChild('slider') public slider!: NouisliderComponent;
   public min = '06:14';
   public max = '18:33';
+  nouiContrast = document.getElementById('nouiContrast');
   // min="06:14" max="18:33"
   public modifiable!: boolean;
   public timeCreneau: number[] = [];
@@ -158,6 +159,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.modification = false;
+    console.log(this.nouiContrast);
     this.timeCreneau = [this.secondsFromTime(this.min), this.secondsFromTime(this.max)];
     const currentTitle = this.titleService.getTitle();
 
@@ -233,14 +235,9 @@ export class AppComponent implements OnInit {
       // this.timeCreneau = event;
     }
   }
-  onDrop(event) {
-    console.log(event);
-  }
-  onDragOver(event) {
-    console.log(event);
-  }
-  ondragstart(event) {
-    console.log(event);
+  onSelect(event){
+  console.log("🚀 ~ file: app.component.ts ~ line 237 ~ AppComponent ~ onSelect ~ event", event)
+
   }
 
   timeFromSeconds(value: number): string {
