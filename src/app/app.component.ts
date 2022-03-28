@@ -154,13 +154,11 @@ export class AppComponent implements OnInit {
   ) {
     iconRegistry.addSvgIcon('apple', sanitizer.bypassSecurityTrustResourceUrl('assets/apple-icon.svg'));
     iconRegistry.addSvgIcon('windows', sanitizer.bypassSecurityTrustResourceUrl('assets/windows-icon.svg'));
-
   }
 
   ngOnInit() {
     // this.modification = false;
     this.timeCreneau = [this.secondsFromTime(this.min), this.secondsFromTime(this.max)];
-    console.log("🚀 ~ file: app.component.ts ~ line 163 ~ AppComponent ~ ngOnInit ~  this.timeCreneau",  this.timeCreneau)
     const currentTitle = this.titleService.getTitle();
 
     if (json) {
@@ -214,10 +212,10 @@ export class AppComponent implements OnInit {
     }
   }
 
-  creneau1ON = new Date(1970, 1, 1, 6, 0);
-  creneau1OFF = new Date(1970, 1, 1, 12, 0);
-  creneau2ON = new Date(1970, 1, 1, 14, 0);
-  creneau2OFF = new Date(1970, 1, 1, 20, 0);
+  // creneau1ON = new Date(1970, 1, 1, 6, 0);
+  // creneau1OFF = new Date(1970, 1, 1, 12, 0);
+  // creneau2ON = new Date(1970, 1, 1, 14, 0);
+  // creneau2OFF = new Date(1970, 1, 1, 20, 0);
 
   public updateCreneauON(value: string) {
     this.timeCreneau[0] = this.secondsFromTime(value);
@@ -228,16 +226,20 @@ export class AppComponent implements OnInit {
     this.timeCreneau[1] = this.secondsFromTime(value);
     this.slider.slider.set(this.timeCreneau);
   }
-  onChange(event){
+  onChange(item, event) {
+    console.log(event);
+    if (item) {
+      item.start = event;
+      // this.timeCreneau = event;
+    }
+  }
+  onDrop(event) {
     console.log(event);
   }
-  onDrop(event){
+  onDragOver(event) {
     console.log(event);
   }
-  onDragOver(event){
-    console.log(event);
-  }
-  ondragstart(event){
+  ondragstart(event) {
     console.log(event);
   }
 
@@ -270,7 +272,8 @@ export class AppComponent implements OnInit {
   public someTimeConfig: any = [
     {
       Id: 1,
-      connect: [false, true, false],
+      start: [0, 86400],
+      // connect: [false, true, false],
       padding: [0, 60],
       behaviour: 'drag-tap',
       range: {
@@ -288,7 +291,8 @@ export class AppComponent implements OnInit {
     },
     {
       Id: 2,
-      connect: [false, true, false],
+      start: [0, 86400],
+      // connect: [false, true, false],
       padding: [0, 60],
       behaviour: 'drag-tap',
       range: {
@@ -306,7 +310,8 @@ export class AppComponent implements OnInit {
     },
     {
       Id: 3,
-      connect: [false, true, false],
+      start: [0, 86400],
+      // connect: [false, true, false],
       padding: [0, 60],
       behaviour: 'drag-tap',
       range: {
@@ -324,7 +329,8 @@ export class AppComponent implements OnInit {
     },
     {
       Id: 4,
-      connect: [false, true, false],
+      start: [0, 86400],
+      // connect: [false, true, false],
       padding: [0, 60],
       behaviour: 'drag-tap',
       range: {
@@ -342,7 +348,8 @@ export class AppComponent implements OnInit {
     },
     {
       Id: 5,
-      connect: [false, true, false],
+      start: [0, 86400],
+      // connect: [false, true, false],
       padding: [0, 60],
       behaviour: 'drag-tap',
       range: {
@@ -360,7 +367,8 @@ export class AppComponent implements OnInit {
     },
     {
       Id: 6,
-      connect: [false, true, false],
+      start: [0, 86400],
+      // connect: [false, true, false],
       padding: [0, 60],
       behaviour: 'drag-tap',
       range: {
@@ -377,7 +385,9 @@ export class AppComponent implements OnInit {
       keyboard: true,
     },
     {
-      connect: [false, true, false],
+      Id: 7,
+      start: [0, 86400],
+      // connect: [false, true, false],
       padding: [0, 60],
       behaviour: 'drag-tap',
       range: {
@@ -394,7 +404,6 @@ export class AppComponent implements OnInit {
       keyboard: true,
     },
   ];
-
 
   public changerModeModification() {
     console.log('changerModeModification');

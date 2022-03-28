@@ -42,7 +42,7 @@
         [(selectedItems)]="selectedDocuments" [disabled]="disable" [disableRangeSelection]="disableRangeSelection"
         [selectOnClick]="selectOnClick" [selectOnDrag]="selectOnDrag" [selectWithShortcut]="selectWithShortcut"
         [dragOverItems]="dragOverItems" (selectionEnded)="selectionEndPoint($event)" (itemSelected)="getAllData($event)"
-        (selectedItemsChange)="selectedItemsVaule($event)" >
+        (selectedItemsChange)="selectedItemsVaule($event)">
         <button (click)="changerModeModification()">Modifier</button>
         <div>
           <table>
@@ -63,8 +63,10 @@
 
 
         <div class="sliderTest" *ngFor="let item of documents">
-          <nouislider #slider (ondrop)="ondrop($event)" (ondragover)="ondragover($event)" (ondragstart)="ondragstart($event)" [dtsSelectItem]="item" [config]="item" [ngModel]="timeCreneau"
-            (ngModelChange)="timeCreneau = $event" (ngModelChange)="onChange($event)" style="margin-bottom: 5rem" [disabled]="modifiable" #documents>
+          <nouislider #slider (ondrop)="ondrop($event)" (ondragover)="ondragover($event)"
+            (ondragstart)="ondragstart($event)" [dtsSelectItem]="item" [config]="item" [ngModel]="timeCreneau"
+            (ngModelChange)="item.start" (ngModelChange)="onChange(item, $event)" style="margin-bottom: 5rem"
+            [disabled]="modifiable" #documents>
           </nouislider>
         </div>
 
