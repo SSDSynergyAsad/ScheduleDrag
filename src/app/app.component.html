@@ -60,9 +60,11 @@
         </div>
         <br />
         <br />
+
+
         <div class="sliderTest" *ngFor="let item of documents">
-          <nouislider #slider [dtsSelectItem]="item" [config]="item" [ngModel]="timeCreneau"
-            (ngModelChange)="timeCreneau = $event" style="margin-bottom: 5rem" [disabled]="modifiable" #documents>
+          <nouislider #slider (ondrop)="ondrop($event)" (ondragover)="ondragover($event)" (ondragstart)="ondragstart($event)" [dtsSelectItem]="item" [config]="item" [ngModel]="timeCreneau"
+            (ngModelChange)="timeCreneau = $event" (ngModelChange)="onChange($event)" style="margin-bottom: 5rem" [disabled]="modifiable" #documents>
           </nouislider>
         </div>
 

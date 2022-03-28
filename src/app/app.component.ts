@@ -160,6 +160,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // this.modification = false;
     this.timeCreneau = [this.secondsFromTime(this.min), this.secondsFromTime(this.max)];
+    console.log("🚀 ~ file: app.component.ts ~ line 163 ~ AppComponent ~ ngOnInit ~  this.timeCreneau",  this.timeCreneau)
     const currentTitle = this.titleService.getTitle();
 
     if (json) {
@@ -226,6 +227,18 @@ export class AppComponent implements OnInit {
   public updateCreneauOFF(value: string) {
     this.timeCreneau[1] = this.secondsFromTime(value);
     this.slider.slider.set(this.timeCreneau);
+  }
+  onChange(event){
+    console.log(event);
+  }
+  onDrop(event){
+    console.log(event);
+  }
+  onDragOver(event){
+    console.log(event);
+  }
+  ondragstart(event){
+    console.log(event);
   }
 
   timeFromSeconds(value: number): string {
@@ -382,12 +395,7 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  sliderOptions(slider: SliderDetails): Options {
-    return {
-      floor: slider.floor,
-      ceil: slider.ceil,
-    };
-  }
+
   public changerModeModification() {
     console.log('changerModeModification');
     this.modification = !this.modification;
@@ -396,7 +404,7 @@ export class AppComponent implements OnInit {
 
   selectionEndPoint(event) {
     console.log(event);
-    console.log(this.documentContainer.selectAll());
+    // console.log(this.documentContainer.selectAll());
   }
   selectedItemsVaule(value) {
     console.log(value);
