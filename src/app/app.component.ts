@@ -72,9 +72,10 @@ export class AppComponent implements OnInit {
   @ViewChild(SelectContainerComponent) selectContainer: SelectContainerComponent;
   @ViewChild('documents') documentContainer: SelectContainerComponent;
   @ViewChild('slider') public slider!: NouisliderComponent;
-  public min = '06:14';
+  public min = '06:00';
   public max = '18:33';
   nouiContrast = document.getElementById('nouiContrast');
+
   // min="06:14" max="18:33"
   public modifiable!: boolean;
   public timeCreneau: number[] = [];
@@ -96,15 +97,15 @@ export class AppComponent implements OnInit {
   public modification = false;
 
   // options: Options = {
-  //   floor: 0,
-  //   ceil: 250,
+    //   floor: 0,
+    //   ceil: 250,
   //   step: 10,
   //   enforceStep: false,
   //   enforceRange: false,
   // };
   // sliders: SliderDetails[] = [
-  //   {
-  //     value: 30,
+    //   {
+      //     value: 30,
   //     highValue: 60,
   //     floor: 0,
   //     ceil: 100,
@@ -116,7 +117,7 @@ export class AppComponent implements OnInit {
   //     ceil: 100,
   //   },
   //   {
-  //     value: 30,
+    //     value: 30,
   //     highValue: 60,
   //     floor: 0,
   //     ceil: 100,
@@ -159,7 +160,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.modification = false;
-    console.log(this.nouiContrast);
     this.timeCreneau = [this.secondsFromTime(this.min), this.secondsFromTime(this.max)];
     const currentTitle = this.titleService.getTitle();
 
@@ -229,15 +229,12 @@ export class AppComponent implements OnInit {
     this.slider.slider.set(this.timeCreneau);
   }
   onChange(item, event) {
-    console.log(event);
     if (item) {
       item.start = event;
       // this.timeCreneau = event;
     }
   }
-  onSelect(event){
-  console.log("🚀 ~ file: app.component.ts ~ line 237 ~ AppComponent ~ onSelect ~ event", event)
-
+  onSelect(event) {
   }
 
   timeFromSeconds(value: number): string {
@@ -403,19 +400,20 @@ export class AppComponent implements OnInit {
   ];
 
   public changerModeModification() {
-    console.log('changerModeModification');
     this.modification = !this.modification;
-    console.log(this.modification);
   }
 
   selectionEndPoint(event) {
-    console.log(event);
-    // console.log(this.documentContainer.selectAll());
+    console.log('end-point', event);
+  }
+  selectionStarted(event) {
+    console.log('start-point', event);
   }
   selectedItemsVaule(value) {
     console.log(value);
   }
   getAllData(values) {
-    console.log('🚀 ~ file: app.component.ts ~ line 371 ~ AppComponent ~ getAllData ~ values', values);
+  console.log("🚀 ~ file: app.component.ts ~ line 413 ~ AppComponent ~ getAllData ~ values", values)
   }
+
 }
